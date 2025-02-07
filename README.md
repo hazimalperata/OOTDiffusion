@@ -75,3 +75,52 @@ python run_ootd.py --model_path <model-image-path> --cloth_path <cloth-image-pat
 - [x] Inference code
 - [x] Model weights
 - [ ] Training code
+
+Step 1: Clone the repository
+```sh
+git clone https://github.com/levihsu/OOTDiffusion
+```
+Step 2: Navigate inside the cloned repository
+```sh
+cd OOTDiffusion
+```
+Step 3: Create virtual environment
+```sh
+conda create -n ootd python==3.10
+```
+Step 4: Activate virtual environment
+```sh
+conda activate ootd
+```
+Step 5: Install torch with CUDA
+```sh
+pip install torch==2.0.1+cu118 torchvision torchaudio --index-url https://download.pytorch.org/whl/cu118
+```
+Step 6: Install requirements
+```sh
+pip install -r requirements.txt
+```
+Step 7: Fix requirements
+```sh
+pip install pydantic==2.9.2 pydantic_core==2.23.4 fastapi==0.112.4
+```
+Step 8: Install LFS support for HuggingFace / GitHub
+```sh
+git lfs install
+```
+Step 9: Download checkpoints
+```sh
+GIT_CLONE_PROTECTION_ACTIVE=false git clone https://huggingface.co/openai/clip-vit-large-patch14 checkpoints/clip-vit-large-patch14
+```
+Step 10: Download some more checkpoints (move humanparsing, ootd, and openpose to checkpoints folder)
+```sh
+GIT_CLONE_PROTECTION_ACTIVE=false git clone https://huggingface.co/levihsu/OOTDiffusion
+```
+Step 11: Change working directory to `run` folder
+```sh
+cd run
+```
+Step 12: Run `gradio_ootd.py` file with python
+```sh
+python gradio_ootd.py
+```
